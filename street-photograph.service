@@ -3,11 +3,11 @@ Description=Street No1 Collector
 After=network.target
 
 [Service]
-User=pi
-WorkingDirectory=/home/pi/street-photograph
-ExecStart=/home/pi/street-photograph/venv/bin/gunicorn -w 2 -b 0.0.0.0:5000 app:app
+User=dietpi
+WorkingDirectory=/home/dietpi/street-photograph
+ExecStart=/home/dietpi/street-photograph/venv/bin/gunicorn -w 2 -b 127.0.0.1:5000 app:app
 Restart=on-failure
-EnvironmentFile=/home/pi/street-photograph/.env
+EnvironmentFile=/home/dietpi/street-photograph/.env
 
 [Install]
 WantedBy=multi-user.target
