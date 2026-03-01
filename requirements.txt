@@ -1,0 +1,8 @@
+flask
+flask-cors
+Pillow
+requests
+python-dotenv
+pyOpenSSL
+cryptography
+gunicorn

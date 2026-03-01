@@ -1,0 +1,247 @@
+/* Gallery Button */
+.btn-gallery {
+    background: transparent;
+    border: 2px solid #f39c12;
+    color: #f39c12;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-gallery:hover {
+    background: #f39c12;
+    color: white;
+}
+
+.btn-gallery.active {
+    background: #f39c12;
+    color: white;
+}
+
+/* Gallery View */
+.gallery-view {
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    background: #0f1117;
+    padding: 30px;
+}
+
+.gallery-date-group {
+    margin-bottom: 30px;
+}
+
+.gallery-date-header {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #2d3148;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+/* Gallery Cards */
+.gallery-card {
+    background: #1a1d27;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-bottom: 4px solid #f39c12;
+}
+
+.gallery-card.completed {
+    border-bottom-color: #27ae60;
+}
+
+.gallery-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-card-info {
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gallery-card-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.btn-show-map {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    margin-left: 8px;
+    transition: background 0.2s;
+}
+
+.btn-show-map:hover {
+    background: #2980b9;
+}
+
+.gallery-card-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: #e2e8f0;
+}
+
+.gallery-card-name.completed::before {
+    content: '\2713 ';
+    color: #27ae60;
+}
+
+.gallery-card-time {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
+/* Lightbox / Image Viewer */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    z-index: 5000;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+}
+
+.lightbox-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.lightbox-counter {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.lightbox-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+}
+
+.lightbox-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    touch-action: pan-y;
+}
+
+.lightbox-body img {
+    max-width: 90vw;
+    max-height: 100%;
+    object-fit: contain;
+    transition: opacity 0.2s;
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    z-index: 1;
+}
+
+.lightbox-nav:hover {
+    opacity: 1;
+}
+
+.lightbox-nav.prev {
+    left: 0;
+}
+
+.lightbox-nav.next {
+    right: 0;
+}
+
+.lightbox-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    flex-shrink: 0;
+}
+
+.lightbox-caption {
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.lightbox-map-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.lightbox-map-btn:hover {
+    background: #2980b9;
+}
+
+.gallery-empty {
+    text-align: center;
+    color: #6b7280;
+    padding: 60px 20px;
+    font-size: 16px;
+}

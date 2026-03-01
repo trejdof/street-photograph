@@ -1,0 +1,204 @@
+/* Map Container */
+#map {
+    flex: 1;
+}
+
+/* My Location button on map */
+.btn-my-location {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: #1a1d27;
+    color: #3498db;
+    border: 2px solid #3498db;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-my-location:hover {
+    background: #3498db;
+    color: white;
+}
+
+.btn-my-location.locating {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+@media (max-width: 768px) {
+    .btn-my-location {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        transform: none;
+    }
+}
+
+/* Leaflet popup dark theme */
+.leaflet-popup-content-wrapper {
+    padding: 0;
+    overflow: hidden;
+    background: #1a1d27;
+    color: #e2e8f0;
+    border: 1px solid #2d3148;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+}
+
+.leaflet-popup-tip {
+    background: #1a1d27;
+}
+
+.leaflet-popup-content {
+    margin: 0;
+    width: 220px !important;
+}
+
+.popup-content {
+    padding: 10px;
+}
+
+.popup-content h3 {
+    margin: 0 0 8px 0;
+    color: #e2e8f0;
+}
+
+.popup-image {
+    display: block;
+    width: 220px;
+    height: 165px;
+    object-fit: cover;
+    margin: 0 -10px 8px -10px;
+    cursor: pointer;
+}
+
+.popup-date {
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 10px;
+}
+
+.btn-delete {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-delete:hover {
+    background: #c0392b;
+}
+
+/* Leaflet controls dark theme */
+.leaflet-bar a {
+    background: #1a1d27;
+    color: #e2e8f0;
+    border-bottom: 1px solid #2d3148;
+}
+
+.leaflet-bar a:hover {
+    background: #2d3148;
+    color: #f39c12;
+}
+
+.leaflet-bar {
+    border: 1px solid #2d3148;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* Street Search */
+.search-street-group {
+    margin: 15px 0;
+    display: none;
+}
+
+.search-street-group.visible {
+    display: block;
+}
+
+.search-street-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #a0aec0;
+}
+
+.search-input-wrapper {
+    display: flex;
+    gap: 5px;
+}
+
+.search-input-wrapper input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #2d3148;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #0f1117;
+    color: #e2e8f0;
+}
+
+.search-input-wrapper input:focus {
+    outline: none;
+    border-color: #f39c12;
+}
+
+.btn-search {
+    padding: 10px 15px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-search:hover {
+    background: #2980b9;
+}
+
+.search-results {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #2d3148;
+    border-radius: 4px;
+    margin-top: 5px;
+    background: #1a1d27;
+    display: none;
+}
+
+.search-results.visible {
+    display: block;
+}
+
+.search-result-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #2d3148;
+}
+
+.search-result-item:hover {
+    background: #252836;
+}
+
+.search-result-name {
+    font-weight: 600;
+    color: #e2e8f0;
+}
+
+.search-result-address {
+    font-size: 12px;
+    color: #6b7280;
+}

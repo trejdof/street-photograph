@@ -1,0 +1,26 @@
+# Environment & secrets
+.env
+
+# Database
+streets.db
+
+# Uploaded photos
+uploads/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+venv/
+
+# Backup zips
+backup_*.zip
+
+# OS junk
+nul
+Thumbs.db
+.DS_Store
+
+# Editor
+.vscode/
+.idea/

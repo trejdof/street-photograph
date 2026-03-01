@@ -1,0 +1,132 @@
+/* Hide map controls when sidebar is open on mobile */
+@media (max-width: 768px) {
+    body.sidebar-open .leaflet-control-zoom,
+    body.sidebar-open .btn-my-location {
+        display: none;
+    }
+}
+
+/* Tablet & Small Desktop */
+@media (max-width: 768px) {
+    .header {
+        padding: 10px 15px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .header h1 {
+        font-size: 1.2rem;
+        flex: 1;
+    }
+
+    .header .count {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+
+    .toggle-sidebar {
+        display: block;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 2000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        padding: 12px 20px;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .upload-section {
+        padding: 15px;
+        max-height: 60vh;
+        overflow-y: auto;
+    }
+
+    .upload-zone {
+        padding: 20px;
+    }
+
+    .list-section {
+        padding: 15px;
+    }
+
+    #map {
+        width: 100%;
+        height: 100%;
+    }
+
+    .upload-zone {
+        padding: 20px 10px;
+    }
+
+    #imagePreview {
+        max-height: 150px;
+    }
+
+    .form-group input {
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+
+    .filter-input {
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+
+    .search-input-wrapper input {
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+
+    .gallery-view {
+        padding: 15px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
+    }
+
+    .gallery-card img {
+        height: 130px;
+    }
+
+    .btn-gallery {
+        font-size: 12px;
+        padding: 4px 10px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1rem;
+    }
+
+    .upload-section {
+        padding: 10px;
+    }
+
+    .list-section {
+        padding: 10px;
+    }
+
+    .upload-zone {
+        padding: 15px 10px;
+    }
+}
