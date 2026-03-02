@@ -7,7 +7,9 @@ static_bp = Blueprint('static_routes', __name__)
 @static_bp.route('/')
 def index():
     """Serve the main HTML page"""
-    return send_from_directory('static', 'index.html')
+    response = send_from_directory('static', 'index.html')
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    return response
 
 
 @static_bp.route('/uploads/<filename>')
