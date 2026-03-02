@@ -1,4 +1,5 @@
 import json
+import logging
 import os
 import uuid
 from datetime import datetime
@@ -8,6 +9,7 @@ from geometry import fetch_street_geometry
 from telegram import notify_street_created, notify_street_deleted
 from backup import main as run_backup
 
+log = logging.getLogger(__name__)
 streets_bp = Blueprint('streets', __name__)
 
 
@@ -41,13 +43,16 @@ def create_street():
     try:
         # Validate required fields
         if 'image' not in request.files:
+            log.warning('create_street: no image in request')
             return jsonify({'error': 'No image file provided'}), 400
 
         image_file = request.files['image']
         if image_file.filename == '':
+            log.warning('create_street: empty filename')
             return jsonify({'error': 'No image selected'}), 400
 
         if not allowed_file(image_file.filename):
+            log.warning('create_street: invalid file type: %s', image_file.filename)
             return jsonify({'error': 'Invalid file type'}), 400
 
         street_name = request.form.get('street_name')
@@ -55,7 +60,10 @@ def create_street():
         lng = request.form.get('lng')
 
         if not all([street_name, lat, lng]):
+            log.warning('create_street: missing fields street_name=%s lat=%s lng=%s', street_name, lat, lng)
             return jsonify({'error': 'Missing required fields'}), 400
+
+        log.info('create_street: saving "%s" lat=%s lng=%s file=%s', street_name, lat, lng, image_file.filename)
 
         # Generate unique ID and date-based filename (YYYYMMDD_N.ext)
         entry_id = str(uuid.uuid4())
@@ -73,6 +81,10 @@ def create_street():
         # Save image file
         image_path = os.path.join(UPLOAD_FOLDER, image_filename)
         image_file.save(image_path)
+        if not os.path.exists(image_path):
+            log.error('create_street: image save appeared to succeed but file not found at %s', image_path)
+            return jsonify({'error': 'Image file could not be saved'}), 500
+        log.info('create_street: image saved to %s', image_path)
 
         # Fetch street geometry from Overpass API
         geometry_json = fetch_street_geometry(street_name, float(lat), float(lng))
@@ -86,6 +98,7 @@ def create_street():
         )
         conn.commit()
         conn.close()
+        log.info('create_street: DB insert committed id=%s', entry_id)
 
         notify_street_created({
             'street_name': street_name,
@@ -108,6 +121,7 @@ def create_street():
         }), 201
 
     except Exception as e:
+        log.exception('create_street: unhandled exception: %s', e)
         return jsonify({'error': str(e)}), 500
 
 
