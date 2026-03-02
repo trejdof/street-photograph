@@ -18,7 +18,8 @@ saveButton.addEventListener('click', async () => {
         });
 
         if (!response.ok) {
-            throw new Error('Failed to save street');
+            const body = await response.text();
+            throw new Error(`${response.status}: ${body}`);
         }
 
         const newStreet = await response.json();
@@ -38,7 +39,7 @@ saveButton.addEventListener('click', async () => {
 
     } catch (error) {
         console.error('Error saving street:', error);
-        alert('Failed to save street entry. Please try again.');
+        alert('Failed to save street entry: ' + error.message);
     } finally {
         saveButton.disabled = false;
         saveButton.textContent = 'Save Entry';
