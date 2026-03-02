@@ -27,11 +27,11 @@ def setup_logging():
     root = logging.getLogger()
     root.setLevel(logging.INFO)
     root.addHandler(handler)
-    # also keep terminal output
-    logging.getLogger().addHandler(logging.StreamHandler())
+    root.addHandler(logging.StreamHandler())
+
+setup_logging()
 
 if __name__ == '__main__':
-    setup_logging()
     init_db()
     run_backup()
     app.run(host='0.0.0.0', port=5000, debug=False)
